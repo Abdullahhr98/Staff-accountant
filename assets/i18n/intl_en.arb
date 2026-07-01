@@ -1,0 +1,9 @@
+{
+  "@@locale": "en",
+  "appTitle": "Payroll Accountant",
+  "home": "Home",
+  "employees": "Employees",
+  "settings": "Settings",
+  "add_employee": "Add new employee",
+  "monthly_report": "Monthly report"
+}

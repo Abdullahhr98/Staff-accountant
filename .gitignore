@@ -1,0 +1,22 @@
+/build
+.android
+.ios
+.packages
+.dart_tool
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache
+.idea
+*.iml
+*.ipr
+*.iws
+*.keystore
+
+# Visual Studio Code
+.vscode/
+
+# Generated files
+pubspec.lock
+
+# macOS
+.DS_Store

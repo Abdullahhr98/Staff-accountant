@@ -1,0 +1,9 @@
+{
+  "@@locale": "ar",
+  "appTitle": "محاسب الرواتب",
+  "home": "الرئيسية",
+  "employees": "الموظفون",
+  "settings": "الإعدادات",
+  "add_employee": "إضافة موظف جديد",
+  "monthly_report": "التقرير الشهري"
+}
