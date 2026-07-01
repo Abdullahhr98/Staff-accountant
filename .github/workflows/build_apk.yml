@@ -1,25 +1,42 @@
-name: staff_accountant
-description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+1
+name: Build Android APK
 
-environment:
-  sdk: ">=3.12.0 <4.0.0"
-  flutter: ">=3.0.0"
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
 
-dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.2
-  intl: ^0.20.2
-  # أضف هنا تبعياتك الأخرى كما كانت سابقًا
-  # example_package: ^x.y.z
+jobs:
+  build:
+    name: Build debug APK
+    runs-on: ubuntu-latest
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-flutter:
-  uses-material-design: true
-  # assets:
-  #   - assets/
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Upgrade dependencies (resolve versions)
+        run: flutter pub upgrade --major-versions
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build debug APK
+        run: flutter build apk --debug --no-shrink
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
